@@ -1,0 +1,28 @@
+pipeline {
+    agent any 
+
+    stages {
+        stage('clone repo') {
+            steps {
+                git branch: 'main', url: 'https://github.com/siddha200340/cricketer-profile-app.git'
+            }
+        }
+
+        stage('build docker image') {
+            steps {
+                script {
+                    dockerImage = docker.build("cricketer-profile-app")
+                }
+            }
+        }
+        stage ('run docker image') {
+            steps {
+                script {
+                    sh "docker stop cricketer-profile-app || true"
+                    sh "docker rm cricketer-profile-app || true"
+                    dockerImage.run("-d -p 5000:5000 --name cricketer-profile-app")
+                }
+            }
+        }
+    }
+}
