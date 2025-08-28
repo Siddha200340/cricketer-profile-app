@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>Player Performance</title></head>
+<body>
+    <h1>Players Performance</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th><th>Name</th><th>Style</th><th>Matches</th><th>Runs</th><th>Wickets</th>
+        </tr>
+        {% for p in players %}
+        <tr>
+            <td>{{p[0]}}</td>
+            <td>{{p[1]}}</td>
+            <td>{{p[2]}}</td>
+            <td>{{p[3]}}</td>
+            <td>{{p[4]}}</td>
+            <td>{{p[5]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/">Back to Home</a>
+</body>
+</html>
+
